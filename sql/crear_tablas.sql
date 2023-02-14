@@ -1,0 +1,65 @@
+CREATE TABLE users (
+dni INT NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+surname VARCHAR(50) NOT NULL,
+date_of_brith DATE NOT NULL,
+date_of_admission DATE,
+career INT NOT NULL,
+password VARCHAR(20) NOT NULL,
+teacher BIT NOT NULL,
+admin BIT NOT NULL,
+);
+
+CREATE TABLE courses (
+code INT NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+career INT NOT NULL,
+season INT NOT NULL,
+teacher INT NOT NULL,
+date_test1 DATETIME NOT NULL,
+date_test2 DATETIME NOT NULL,
+date_test3 DATETIME NOT NULL,
+date_test4 DATETIME NOT NULL,
+date_ap1 DATETIME NOT NULL,
+date_ap2 DATETIME NOT NULL,
+date_ap3 DATETIME NOT NULL,
+date_ap4 DATETIME NOT NULL,
+);
+
+CREATE TABLE qualifications (
+id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+code INT NOT NULL,
+dni INT NOT NULL,
+qual_1 INT,
+qual_2 INT,
+qual_3 INT,
+qual_4 INT,
+ap1 INT,
+ap2 INT,
+ap3 INT,
+ap4 INT,
+give_ap1 BIT,
+give_ap2 BIT,
+give_ap3 BIT,
+give_ap4 BIT,
+);
+
+CREATE TABLE enrollment (
+id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+code INT NOT NULL,
+dni INT NOT NULL
+); 
+
+CREATE TABLE notifications (
+id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+datatime DATETIME NOT NULL,
+subject TEXT NOT NULL,
+from_dni INT NOT NULL,
+to_dni INT NOT NULL,
+message TEXT NOT NULL,
+); 
+
+CREATE TABLE careers (
+code INT NOT NULL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+);

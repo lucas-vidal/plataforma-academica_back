@@ -1,0 +1,55 @@
+
+//PRDUCTOS
+@api_students = http://localhost:3000/courses
+GET {{api_students}}
+
+### ADD PRODUCT
+POST {{api_students}}
+Content-Type: application/json
+
+{
+      "code": 234232,
+      "name": "asdvbcvba",
+      "career": 101,
+      "season": 1,
+      "teacher": 22995987,
+      "date_test1": "1900-01-01T00:00:00.000",
+      "date_test2": "1900-01-01T00:00:00.000",
+      "date_test3": "1900-01-01T00:00:00.000",
+      "date_test4": "1900-01-01T00:00:00.000",
+      "date_ap1": "1900-01-01T00:00:00.000",
+      "date_ap2": "1900-01-01T00:00:00.000Z",
+      "date_ap3": "1900-01-01T00:00:00.000Z",
+      "date_ap4": "1900-01-01T00:00:00.000Z"
+}
+
+
+### REQUEST PRODUCT BY CODE
+GET {{api_students}}/dni/27468845
+
+### COUNT TOTAL PRODUCT
+POST {{api_students}}/count
+
+### DELETE PRODUCT
+DELETE {{api_students}}/34988562
+
+### UPDATE PRODUCT
+PUT {{api_students}}/1001010
+Content-Type: application/json
+
+{
+      "name": "Matematica 1",
+      "career": 101,
+      "season": 2,
+      "teacher": 1555,
+      "date_test1": "1900-01-01T00:00:00.000",
+      "date_test2": "1900-01-01T00:00:00.000",
+      "date_test3": "1900-01-01T00:00:00.000",
+      "date_test4": "1900-01-01T00:00:00.000",
+      "date_ap1": "1900-01-01T00:00:00.000",
+      "date_ap2": "1900-01-01T00:00:00.000Z",
+      "date_ap3": "1900-01-01T00:00:00.000Z",
+      "date_ap4": "1900-01-01T00:00:00.000Z"
+}
+
+
