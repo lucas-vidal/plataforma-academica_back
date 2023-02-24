@@ -1,24 +1,23 @@
-import sql from 'mssql'
+// import sql from 'mssql'
 import config from '../config.js';
-
-
+import pg from 'pg'
+// const { Pool } = require('pg')
+ 
 const dbSettings = {
     user : config.dbUser,
     password : config.dbPassword,
-    server : config.dbServer,
+    host : config.dbServer,
     database : config.dbDatabase,
-    options : {
-        encrypt : true,
-        trustServerCertificate : true,
-    }
+    port: config.dbPort
+    
 };
 
 export async function getConnection(){
     try {
-        const pool = await sql.connect(dbSettings);
+        const pool = new pg.Pool({dbSettings});
         return pool;
     } catch (error) {
         console.log(error);
     } 
 }
-export { sql };
+export { pg };
