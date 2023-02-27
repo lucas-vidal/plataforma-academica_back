@@ -1,0 +1,64 @@
+
+//PRDUCTOS
+@api_users = http://localhost:3000/qualifications
+GET {{api_users}}
+
+### PRDUCTOS
+GET {{api_users}}/2022002
+
+### ADD PRODUCT
+POST {{api_users}}
+Content-Type: application/json
+
+{
+      "code": 2022001,
+      "dni": 32546221,
+      "qual_1": 7,
+      "qual_2": 1,
+      "qual_3": 0,
+      "qual_4": 0,
+      "ap1": 0,
+      "ap2": 0,
+      "ap3": 0,
+      "ap4": 0,
+      "give_ap1": false,
+      "give_ap2": false,
+      "give_ap3": false,
+      "give_ap4": false,
+}
+
+### REQUEST USER BY DNI
+GET {{api_users}}/2022002/35899875
+
+### REQUEST USER BY DNI
+GET {{api_users}}/102
+
+### COUNT TOTAL PRODUCT
+POST {{api_users}}/count_students
+
+### COUNT TOTAL PRODUCT
+POST {{api_users}}/count_teachers
+
+### DELETE PRODUCT
+DELETE {{api_users}}/2022001/32546221
+
+### UPDATE PRODUCT
+PUT {{api_users}}/2022001/32546221
+Content-Type: application/json
+
+{
+      "qual_1": 7,
+      "qual_2": 1,
+      "qual_3": 10,
+      "qual_4": 0,
+      "ap1": 0,
+      "ap2": 0,
+      "ap3": 0,
+      "ap4": 0,
+      "give_ap1": false,
+      "give_ap2": false,
+      "give_ap3": false,
+      "give_ap4": false
+}
+
+

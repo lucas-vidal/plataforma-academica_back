@@ -1,0 +1,58 @@
+
+//PRDUCTOS
+@api_users = http://localhost:3000/users
+GET {{api_users}}
+
+### ADD PRODUCT
+POST {{api_users}}
+Content-Type: application/json
+
+{
+      "dni": 32165498,
+      "name": "Luis",
+      "surname": "Nasiff",
+      "date_of_brith": "1979-01-01T00:00:00.000",
+      "date_of_admission": "2022-01-15T00:00:00.000",
+      "career": 101,
+      "password": "123456",
+      "teacher": false,
+      "admin": false
+}
+
+### REQUEST USER BY DNI
+GET {{api_users}}/dni/27468845
+
+### REQUEST USER BY DNI
+GET {{api_users}}/102
+
+### COUNT TOTAL PRODUCT
+POST {{api_users}}/count_students
+
+### COUNT TOTAL PRODUCT
+POST {{api_users}}/count_teachers
+
+### DELETE PRODUCT
+DELETE {{api_users}}/32165498
+
+### UPDATE PRODUCT
+PUT {{api_users}}/32165498
+Content-Type: application/json
+
+{
+      "name": "Luis",
+      "surname": "Nasif",
+      "date_of_brith": "1979-01-01T00:00:00.000",
+      "date_of_admission": "2022-01-15T00:00:00.000",
+      "career": 101,
+      "password": "12363333456",
+      "teacher": false,
+      "admin": false
+}
+
+### UPDATE PASSWORD
+PUT {{api_users}}/password/32165498
+Content-Type: application/json
+
+{
+      "password": "654321"
+}

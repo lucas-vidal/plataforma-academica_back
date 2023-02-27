@@ -1,12 +1,12 @@
-import { getConnection, sql } from "../database/connection.js";
+import { getConnection } from "../database/connection.js";
 import querys from "../database/querys.js";
 
 //Consulta la tabla de CAREERS
 export const getCareers = async (req, res) => {
     try {
         const pool = await getConnection();
-        const result = await pool.request().query(querys.getCareers)
-        res.json(result.recordsets)
+        const result = await pool.query(querys.getCareers)
+        res.json(result.rows)
     } catch (error) {
         res.status(500);
         res.status(error.message);

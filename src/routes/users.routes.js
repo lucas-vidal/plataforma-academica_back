@@ -1,6 +1,6 @@
 
 import {Router} from 'express'
-import { getUsers, getUserByDni, getUserByCareer, countTotalUsersStudents, countTotalUsersTeachers, addNewUser, deleteUserByDni, updateUserByDni
+import { getUsers, getUserByDni, getUserByCareer, countTotalUsersStudents, countTotalUsersTeachers, addNewUser, deleteUserByDni, updateUserByDni, updatePasswordByDni
         } from '../controllers/users.controller.js'
 
         const router = Router()
@@ -20,5 +20,7 @@ import { getUsers, getUserByDni, getUserByCareer, countTotalUsersStudents, count
         router.delete('/users/:dni', deleteUserByDni)
         //Actualizar un usuario
         router.put('/users/:dni', updateUserByDni)
+        //Actualizar un password
+        router.put('/users/password/:dni', updatePasswordByDni)
 
         export default router

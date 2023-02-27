@@ -1,12 +1,12 @@
-import { getConnection, sql } from "../database/connection.js";
+import { getConnection } from "../database/connection.js";
 import querys from "../database/querys.js";
 
 //Consulta la tabla de calificaciones
 export const getQualifications = async (req, res) => {
     try {
         const pool = await getConnection();
-        const result = await pool.request().query(querys.getQualifications)
-        res.json(result.recordsets)
+        const result = await pool.query(querys.getQualifications)
+        res.json(result.rows)
     } catch (error) {
         res.status(500);
         res.status(error.message);
@@ -22,13 +22,8 @@ export const getQualificationByCourse = async (req, res) => {
     }
     try {
         const pool = await getConnection();
-
-        const result = await pool
-            .request()
-            .input("code", sql.Int, code)
-            .query(querys.getQualificationByCourse);
-
-        res.send(result.recordsets[0]);
+        const result = await pool.query(querys.getQualificationByCourse, [code]);
+        res.send(result.rows);
     } catch (error) {
         res.status(500);
         res.status(error.message);
@@ -44,14 +39,8 @@ export const getQualificationByDniAndCourse = async (req, res) => {
     }
     try {
         const pool = await getConnection();
-
-        const result = await pool
-            .request()
-            .input("code", sql.Int, code)
-            .input("dni", sql.Int, dni)
-            .query(querys.getQualificationByDniAndCourse);
-
-        res.send(result.recordsets[0][0]);
+        const result = await pool.query(querys.getQualificationByDniAndCourse, [code, dni]);
+        res.send(result.rows[0]);
     } catch (error) {
         res.status(500);
         res.status(error.message);
@@ -70,19 +59,7 @@ export const addNewQualification = async (req, res) => {
     try {
         const pool = await getConnection();
 
-        await pool
-            .request()
-            .input("code", sql.Int, code)
-            .input("dni", sql.Int, dni)
-            .input("qual_1", sql.Int, qual_1)
-            .input("qual_2", sql.Int, qual_2)
-            .input("qual_3", sql.Int, qual_3)
-            .input("qual_4", sql.Int, qual_4)
-            .input("ap1", sql.Int, ap1)
-            .input("ap2", sql.Int, ap2)
-            .input("ap3", sql.Int, ap3)
-            .input("ap4", sql.Int, ap4)
-            .query(querys.addNewQualification);
+        await pool.query(querys.addNewQualification, [ code, dni, qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4 ]);
         res.json({ code, dni, qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4 });
 
     } catch (error) {
@@ -101,13 +78,7 @@ export const deleteQualificationByDniAndCourse = async (req, res) => {
 
     try {
         const pool = await getConnection();
-
-        const result = await pool
-            .request()
-            .input("code", sql.Int, code)
-            .input("dni", sql.Int, dni)
-            .query(querys.deleteQualificationByDniAndCourse);
-
+        const result = await pool.query(querys.deleteQualificationByDniAndCourse, [code, dni]);
         res.sendStatus(204);
     } catch (error) {
         res.status(500);
@@ -118,7 +89,7 @@ export const deleteQualificationByDniAndCourse = async (req, res) => {
 //Actualiza un calificacion
 export const updateQualificationByDniAndCourse = async (req, res) => {
 
-    const { qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4  } = req.body;
+    const { qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4, give_ap1, give_ap2, give_ap3, give_ap4 } = req.body;
     const { code , dni } = req.params;
 
     if ( code == null || dni == null ) {
@@ -126,21 +97,9 @@ export const updateQualificationByDniAndCourse = async (req, res) => {
     }
        
     try {
- const pool = await getConnection();
-        await pool
-            .request()
-            .input("qual_1", sql.Int, qual_1)
-            .input("qual_2", sql.Int, qual_2)
-            .input("qual_3", sql.Int, qual_3)
-            .input("qual_4", sql.Int, qual_4)
-            .input("ap1", sql.Int, ap1)
-            .input("ap2", sql.Int, ap2)
-            .input("ap3", sql.Int, ap3)
-            .input("ap4", sql.Int, ap4)
-            .input("code", sql.Int, code)
-            .input("dni", sql.Int, dni)
-            .query(querys.updateQualificationByDniAndCourse);
-        res.json({  code, dni, qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4 });
+        const pool = await getConnection();
+        await pool.query(querys.updateQualificationByDniAndCourse, [qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4, give_ap1, give_ap2, give_ap3, give_ap4, code, dni]);
+        res.json({  code, dni, qual_1, qual_2, qual_3, qual_4, ap1, ap2, ap3, ap4, give_ap1, give_ap2, give_ap3, give_ap4 });
     } catch (error) {
 
         res.status(500);
