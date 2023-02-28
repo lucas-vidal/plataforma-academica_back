@@ -28,4 +28,13 @@ app.use(qualificactionsRoutes);
 app.use(enollmentRoutes);
 app.use(careersRoutes);
 
+app.get("/", (req, res) => {
+    res.send("API Portal Academico")
+    res.send("/users")
+    res.send("/careers")
+    res.send("/notifications")
+    res.send("/enrollments")
+    res.send("/qualifications")
+    res.send("/courses")
+})
 export default app
