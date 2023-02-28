@@ -11,7 +11,7 @@ POST {{api_users}}
 Content-Type: application/json
 
 {
-      "code": 2022001,
+      "code": 2022002,
       "dni": 32546221,
       "qual_1": 7,
       "qual_2": 1,
@@ -21,13 +21,13 @@ Content-Type: application/json
       "ap2": 0,
       "ap3": 0,
       "ap4": 0,
-      "give_ap1": false,
+      "give_ap1": true,
       "give_ap2": false,
       "give_ap3": false,
-      "give_ap4": false,
+      "give_ap4": false
 }
 
-### REQUEST USER BY DNI
+### REQUEST CALIFICACION POR MATERIA Y DNI
 GET {{api_users}}/2022002/35899875
 
 ### REQUEST USER BY DNI
@@ -43,19 +43,19 @@ POST {{api_users}}/count_teachers
 DELETE {{api_users}}/2022001/32546221
 
 ### UPDATE PRODUCT
-PUT {{api_users}}/2022001/32546221
+PUT {{api_users}}/2022002/32546221
 Content-Type: application/json
 
 {
       "qual_1": 7,
       "qual_2": 1,
-      "qual_3": 10,
+      "qual_3": 0,
       "qual_4": 0,
       "ap1": 0,
       "ap2": 0,
       "ap3": 0,
       "ap4": 0,
-      "give_ap1": false,
+      "give_ap1": true,
       "give_ap2": false,
       "give_ap3": false,
       "give_ap4": false
